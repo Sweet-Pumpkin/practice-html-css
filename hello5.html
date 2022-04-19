@@ -5,11 +5,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-    .box { border:4px solid red; }
-  </style>
+  <link rel="stylesheet" href="./css/style1.css">
+
 </head>
 <body>
-  <div class="box">a</div>
+  <div id="alertBox">
+    <p id="target">hello!</p>
+    <span
+      id="closeAlert">
+      Close
+    </span>
+  </div>
+  
+  <div>
+    <button 
+    class="showAlert" 
+    onclick="openModal('hello!')">
+      Click me
+    </button>
+    <button
+    class="showAlert2"
+    onclick="openModal('hello2')">
+    Click me
+    </button>
+  </div>
+
+  <script>
+    function Modal() {
+      document.getElementById("alertBox").style.display = "none";
+    }
+    function openModal(k) {
+      document.getElementById("alertBox").style.display = "block";
+      document.getElementById("target").innerHTML = k;
+    }
+    document.getElementById("closeAlert").addEventListener("click", Modal);
+
+    // document.getElementById("closeAlert").addEventListener("click", () => {
+    // document.getElementById("alertBox").style.display = "none";  
+    // });
+  </script>
 </body>
 </html>

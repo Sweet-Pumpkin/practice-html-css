@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style2.css" />
+</head>
+<body>
+  <input type="text" name="" id="inputValue">
+  <button
+    id="submitBtn">
+    Submit
+  </button>
+  <div id="result">
+
+  </div>
+
+  <script>
+    document.getElementById("submitBtn").addEventListener("click", () => {
+      const value = document.getElementById("inputValue").value;
+      if (value == 0) {
+        alert("INPUT THE MESSAGE");
+      } else {
+        if (value === " ") {
+          alert("INPUT THE MESSAGE");
+        } else { 
+          document.getElementById("result").innerHTML = `Hello ${value}!!`;
+        }
+      }
+    })
+
+    // trim() 방식
+    // if(!value.trim()) {
+    //  alert("INPUT THE MESSAGE");
+    // } else {
+    //   document.getElementById("result").innerHTML = `Hello ${value}!!`;
+    // }
+  </script>
+</body>
+</html>
