@@ -51,7 +51,7 @@ if (value == 0) {
 }
 ```
 ---
-## 2022.04.19 Javascript 특강
+## 2022.04.20 정을수 강사님 HTML/CSS 강의
 ### 학습내용
 1. css float 이해하기
 - HTML
