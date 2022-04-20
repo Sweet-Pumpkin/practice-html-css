@@ -10,7 +10,7 @@
 </head>
 <body>
   <div id="alertBox">
-    <p id="target">hello!</p>
+    <p id="target"></p>
     <span
       id="closeAlert">
       Close
@@ -26,20 +26,19 @@
     <button
     class="showAlert2"
     onclick="openModal('hello2')">
-    Click me
+      Click me
     </button>
   </div>
 
   <script>
-    function Modal() {
+    function closeModal() {
       document.getElementById("alertBox").style.display = "none";
     }
     function openModal(k) {
       document.getElementById("alertBox").style.display = "block";
       document.getElementById("target").innerHTML = k;
     }
-    document.getElementById("closeAlert").addEventListener("click", Modal);
-
+    document.getElementById("closeAlert").addEventListener("click", closeModal);
     // document.getElementById("closeAlert").addEventListener("click", () => {
     // document.getElementById("alertBox").style.display = "none";  
     // });

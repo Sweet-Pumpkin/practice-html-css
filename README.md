@@ -50,3 +50,59 @@ if (value == 0) {
   }
 }
 ```
+---
+## 2022.04.19 Javascript 특강
+### 학습내용
+1. css float 이해하기
+- HTML
+```
+<body>
+  <div class="grandmom">
+    <div class="mother left">
+      <div class="photo"></div>
+      <div class="text">
+        하늘에 날린 아드레날린 하나도 화날 일 없는 이곳은 그녀와 나 파랑새만이 육감과 교감으로 오감따위는 초월해버린 기적의 땅 쉿 몽환의 숲 
+      </div>
+    </div>
+    <div class="mother right">
+      <div class="photo"></div>
+      <div class="text">
+        하늘에 날린 아드레날린 하나도 화날 일 없는 이곳은 그녀와 나 파랑새만이 육감과 교감으로 오감따위는 초월해버린 기적의 땅 쉿 몽환의 숲 
+      </div>
+    </div>
+    <p class="bottom">mother father give me a one dollor!</p>
+  </div>
+</body>
+```
+- CSS
+```
+<style>
+    .grandmom {
+      border: 4px solid black;
+      padding: 20px;
+      width: 700px;
+    }
+    .mother.left {float: left;}
+    .mother.right { float: right }
+    .mother {
+      width: 270px;
+      border: 4px solid lime;
+      padding: 20px; 
+      margin-bottom: 20px;
+    }
+    .mother > .photo {
+      width: 100px;
+      height: 100px;
+      border: 10px solid lime;
+      float: left;
+    }
+    .mother > .text {
+      border: 2px solid magenta;
+    }
+    .bottom {
+      border: 4px solid blue;
+      clear: both;
+      padding: 20px;
+    }
+</style>
+```

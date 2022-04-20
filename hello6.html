@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./css/style2.css" />
 </head>
 <body>
   <input type="text" name="" id="inputValue">
@@ -21,10 +20,10 @@
     document.getElementById("submitBtn").addEventListener("click", () => {
       const value = document.getElementById("inputValue").value;
       if (value == 0) {
-        alert("INPUT THE MESSAGE");
+        alert("메세지를 입력하세요!");
       } else {
         if (value === " ") {
-          alert("INPUT THE MESSAGE");
+          alert("메세지를 입력하세요!");
         } else { 
           document.getElementById("result").innerHTML = `Hello ${value}!!`;
         }

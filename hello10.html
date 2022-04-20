@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+  <style>
+    body {
+      background-color: #e5e5e5;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* CARD */
+    .card {
+      width: 280px;
+      background-color: #fff;
+      margin: 20px auto;
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    /* PHOTO */
+    /* photo와 index 사이의 공간이 생기기 때문에 vertical-align: top; 또는 이미지를 display: block;으로 만듦 */
+    .photo > img {display: block;}
+
+    /* INDEX */
+    .index {
+      overflow: hidden;
+    }
+    .index > .avata {
+      float: left;
+      padding: 16px 17px;
+    }
+    .index > .avata * {
+      float: left;
+    }
+    .index > .avata > img {
+      width: 27px;
+      height: 27px;
+      margin-right: 3px;
+    }
+    .index > .avata span {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 27px;
+    }
+    .index > .reaction {
+      float: right;
+      padding: 16px 17px;
+      margin-top: 3px;
+    }
+    .index > .reaction > * {
+      float: left;
+
+    }
+    .index > .reaction > span > * {
+      float: left;
+    }
+    .index > .reaction > span:nth-child(1) {
+      margin-right: 10px;
+    }
+    .index > .reaction > span > img {
+      margin-right: 3px;
+    }
+    .index > .reaction > span > span {
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    /*ARTICLE*/
+    .article {
+      margin: 0 5.5px;
+    }
+    .article > h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 12px 10px 10px 10px;
+
+    }
+    .article > h2 {
+      font-size: 14px;
+      font-weight: 400;
+      color: #4f4f4f;
+      margin: 0px 10px 10px 10px;
+    }
+    .article > p {
+      font-size: 12px;
+      font-weight: 400;
+      color: #333;
+      line-height: 14.06px;
+      margin: 0px 10px 10px 10px;
+    }
+
+    /* HEADER */
+    .header > .home {
+      width: 44px;
+      height: 24px;
+      background-color: #27ae69;
+      border-radius: 8px;
+      margin: 10px;
+    }
+    .header > .home > span {
+      font-size: 10px;
+      color: #fff;
+      display: block;
+      text-align: center;
+      line-height: 23px;
+    }
+    .header > h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 10px;
+    }
+    .header > h2 {
+      font-size: 14px;
+      font-weight: 400;
+      color: #4f4f4f;
+      margin: 10px;
+    }
+  </style>
+
+<body>
+  
+  <div class="card">
+    <div class="photo">
+      <img src="./img/Image1.png" alt="" />
+    </div>
+    <div class="index">
+      <div class="avata">
+        <img src="./img/Avatar.png" alt="" />
+        <span>Felipe Sacudon</span>
+      </div>
+      <div class="reaction">
+        <span class="comment">
+          <img src="./img/message-circle.svg" alt="" />
+          <span>22</span>
+        </span>
+        <span class="like">
+          <img src="./img/heart.svg" alt="" />
+          <span>22</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="photo">
+      <img src="./img/Image1.png" alt="" />
+    </div>
+    <div class="article">
+      <h1>Title</h1>
+      <h2>Subtitle</h2>
+      <p>
+        Lorem ipsum carrots, enhanced undergraduate developer, but they do occaecat time and vitality, Lorem ipsum carrots, enhanced undergraduate developer, but they do occaecat time and vitality
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="header">
+      <div class="home">
+        <span>HOME</span>
+      </div>
+      <h1>Lampara Look</h1>
+      <h2>by Saca Tuerca</h2>
+    </div>
+    <div class="photo">
+      <img src="./img/Image1.png" alt="" />
+    </div>
+    <div class="index">
+      <div class="avata">
+        <img src="./img/Avatar.png" alt="" />
+        <span>Name</span>
+      </div>
+      <div class="reaction">
+        <span class="comment">
+          <img src="./img/message-circle.svg" alt="" />
+          <span>100</span>
+        </span>
+        <span class="like">
+          <img src="./img/heart.svg" alt="" />
+          <span>100</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
