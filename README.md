@@ -109,5 +109,5 @@ if (value == 0) {
 ## 2022.04.22 정을수 강사님 HTML/CSS 강의
 ### 학습내용
 - position 이해하기
-- [예제1 코드](./hello11.html)
-- [예제2 코드](./hello12.html)
+- [예제1 코드](./html/hello11.html)
+- [예제2 코드](./html/hello12.html)
