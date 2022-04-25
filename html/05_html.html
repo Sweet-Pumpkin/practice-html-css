@@ -37,9 +37,7 @@
   <script>
     const kindWarp = document.querySelector('.kind_wrap');
     const slider = kindWarp.querySelector('.slider');
-    let sliderTrans = slider.style.transform;
     const slideLis = slider.querySelectorAll('li');
-    const slideCount = slideLis.length;
     const moveBtn = kindWarp.querySelector('.arrow');
     
     // ul 넓이 계산
@@ -48,8 +46,9 @@
     slider.style.width = `${sliderWidth}px`;
 
     // 리스너 설치
-    let currentIdx = 0;
-    let translate = 0;
+    const slideCount = slideLis.length;
+    let currentIdx = 0; // 현재 슬라이드 인덱스 값
+    let translate = 0; // 슬라이드 위치 값
     moveBtn.addEventListener('click', moveSlide);
     function moveSlide(event) {
       event.preventDefault();
