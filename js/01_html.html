@@ -7,13 +7,34 @@
   <title>Document</title>
 </head>
 <body>
+  <ul>
+    <li>사과</li>
+    <li>바나나</li>
+    <li>오렌지</li>
+    <li>포도</li>
+    <li>복숭아</li>
+
+  </ul>
+
   <script>
-    var b = {나이:20};
-    const k = 1;
-    let d = 2;
-    window.b;
-    this.b;
-    console.log(this);
+    let a = 100;
+    var b = 30;
+    const c = 40;
+    if (a > 20) {
+      let a = 10;
+      var b = 10;
+      const c = 20;
+      console.log(a); // 10
+      console.log(b); // 10
+      console.log(c); // 20
+    }
+    if (a > 5) {
+      let a = 'kkk';
+      console.log(a); // kkk 
+    }
+    console.log(a); // 100
+    console.log(b); // 10
+    console.log(c); // 40
   </script>
 </body>
 </html>
