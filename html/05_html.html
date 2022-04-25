@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    .kind_wrap {border:2px solid black; width:100%; max-width:800px; margin:0 auto; position: relative;}
+    .kind_wrap > .kind_slider {overflow: hidden;}
+    .kind_wrap > .kind_slider .slider {position: relative; transition: 0.5s;}
+    .kind_wrap > .kind_slider .slider li {float:left}
+    .kind_wrap > .kind_slider img {vertical-align: top;}
+    .kind_wrap .arrow > a.prev {position: absolute; left:-50px; top:100px}
+    .kind_wrap .arrow > a.next {position: absolute; right:-50px; top:100px;}
+  </style>
+
+</head>
+
+<body>
+  <div class="kind_wrap">
+    <div class="kind_slider">
+      <ul class="slider">
+        <li><img src="https://via.placeholder.com/800x200.png?text=1" alt=""></li>
+        <li><img src="https://via.placeholder.com/800x200.png?text=2" alt=""></li>
+        <li><img src="https://via.placeholder.com/800x200.png?text=3" alt=""></li>
+      </ul>
+    </div>
+    <div class="arrow">
+      <a href="javascript:void(0)" class="prev">이전</a>
+      <a href="javascript:void(0)" class="next">다음</a>
+  </div>
+  </div>
+
+  <script>
+    const kindWarp = document.querySelector('.kind_wrap');
+    const slider = kindWarp.querySelector('.slider');
+    let sliderTrans = slider.style.transform;
+    const slideLis = slider.querySelectorAll('li');
+    const slideCount = slideLis.length;
+    const moveBtn = kindWarp.querySelector('.arrow');
+    
+    // ul 넓이 계산
+    const liWidth = slideLis[0].clientWidth;
+    const sliderWidth = liWidth * slideLis.length;
+    slider.style.width = `${sliderWidth}px`;
+
+    // 리스너 설치
+    let currentIdx = 0;
+    let translate = 0;
+    moveBtn.addEventListener('click', moveSlide);
+    function moveSlide(event) {
+      event.preventDefault();
+
+      if (event.target.textContent === '다음') {
+          if (currentIdx !== slideCount -1) {
+            translate -= 800
+            slider.style.transform = `translate(${translate}px)`
+            currentIdx += 1;
+          }
+      } else if (event.target.textContent === '이전') {
+        if (currentIdx !== 0) {
+          translate += 800
+          slider.style.transform = `translate(${translate}px)`
+          currentIdx -= 1;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
