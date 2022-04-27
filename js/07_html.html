@@ -60,26 +60,15 @@ window.onload = function() {
   function moveSlide(event) {
     event.preventDefault();
     if (event.target.className === 'next') {
-      if (currentNum === slideLis.length - 1) {
-        currentNum = 0;
-        moveDist = 0;
-        slider.style.left = `${moveDist}px`;
-      } else {
+      if (currentNum === slideLis.length - 1) return;
         currentNum++;
         moveDist += -liWidth;
         slider.style.left = `${moveDist}px`;
-      }
-
-    } else if (event.target.className === 'prev') {
-      if (currentNum === 0) {
-        currentNum = slideLis.length - 1
-        moveDist = -(liWidth  * currentNum);
-        slider.style.left = `${moveDist}px`;
-      } else {
+    } else {
+      if (currentNum === 0) return;
         currentNum--;
         moveDist += liWidth;
         slider.style.left = `${moveDist}px`
-      }
     }
   }
 }
