@@ -45,43 +45,56 @@ window.onload = function() {
   const slideLis = slider.querySelectorAll('li')
   const moveButton = kindWrap.querySelector('.arrow');
 
+  const cloneA = slideLis[0].cloneNode(true);
+  const cloneC = slideLis[slideLis.length - 1].cloneNode(true);
+  slider.insertBefore(cloneC, slideLis[0]);
+  slider.appendChild(cloneA);
+
   /* 주요 변수 초기화 */
   let moveDist = 0;
-  let currentNum = 0;
+  let currentNum = 1;
   const speedTime = 500;
 
-  /* ul 넓이 계산해 주기 */
+  /* CSSOM 셋업 */
+  const sliderCloneLis = slider.querySelectorAll('li'); // 기존 li와 클론 li까지 포함해 가로 값을 계산하기 위함.
   const liWidth = slideLis[0].clientWidth;
-  const sliderWidth = liWidth * slideLis.length;
-  slider.style.width = `${sliderWidth}px` ;
-  slider.style.left = 0;
-  slider.style.transition = `all ${speedTime}ms ease`;
+  const sliderWidth = liWidth * sliderCloneLis.length;
+  slider.style.width = `${sliderWidth}px`;
+  moveDist = -liWidth;
+  slider.style.left = `${moveDist}px`;
 
   /* 리스너 설치하기 */
   moveButton.addEventListener('click', moveSlide);
 
+  function move(direction) {
+    currentNum += (-1 * direction);
+    moveDist += liWidth * direction;
+    slider.style.left = `${moveDist}px`;
+    slider.style.transition = `all ${speedTime}ms ease`;
+  }
+
+
   function moveSlide(event) {
     event.preventDefault();
     if (event.target.className === 'next') {
-      if (currentNum === slideLis.length - 1) {
-        currentNum = 0;
-        moveDist = 0;
-        slider.style.left = `${moveDist}px`;
-      } else {
-        currentNum++;
-        moveDist += -liWidth;
-        slider.style.left = `${moveDist}px`;
+      move(-1);
+      if (currentNum === sliderCloneLis.length - 1) {
+        setTimeout(() => {
+          slider.style.transition = 'none'; // 애니메이션 중단
+          moveDist = -liWidth; // li[0] 값 
+          slider.style.left = `${moveDist}px`; // li[0] 값 위치로
+          currentNum = 1;
+        }, speedTime );
       }
-
-    } else if (event.target.className === 'prev') {
+    } else {
+      move(1);
       if (currentNum === 0) {
-        currentNum = slideLis.length - 1
-        moveDist = -(liWidth  * currentNum);
-        slider.style.left = `${moveDist}px`;
-      } else {
-        currentNum--;
-        moveDist += liWidth;
-        slider.style.left = `${moveDist}px`
+        setTimeout(() => {
+          slider.style.transition = 'none';
+          currentNum = sliderCloneLis.length -2;
+          moveDist = -(liWidth * currentNum); // li[0] 값 
+          slider.style.left = `${moveDist}px`; // li[0] 값 위치로
+        }, speedTime);
       }
     }
   }

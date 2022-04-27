@@ -43,32 +43,39 @@ window.onload = function() {
   const slider = kindWrap.querySelector('.slider');
   const slideLis = slider.querySelectorAll('li')
   const moveButton = kindWrap.querySelector('.arrow');
+
+   /* 주요 변수 초기화 */
   let moveDist = 0;
   let currentNum = 0;
+  const speedTime = 500;
 
-  /* ul 넓이 계산해 주기 */
+  /* CSSOM 셋업 */
   const liWidth = slideLis[0].clientWidth;
   const sliderWidth = liWidth * slideLis.length;
   slider.style.width = `${sliderWidth}px` ;
 
   slider.style.left = 0;
-  slider.style.transition = 'all 500ms ease';
+  slider.style.transition = `all ${speedTime}ms ease`;
 
   /* 리스너 설치하기 */
   moveButton.addEventListener('click', moveSlide);
+
+  function move(direction) {
+    currentNum += (-1 * direction);
+    moveDist += liWidth * direction;
+    slider.style.left = `${moveDist}px`;
+    console.log(currentNum);
+    console.log(slideLis.length);
+  }
 
   function moveSlide(event) {
     event.preventDefault();
     if (event.target.className === 'next') {
       if (currentNum === slideLis.length - 1) return;
-        currentNum++;
-        moveDist += -liWidth;
-        slider.style.left = `${moveDist}px`;
+        move(-1);
     } else {
       if (currentNum === 0) return;
-        currentNum--;
-        moveDist += liWidth;
-        slider.style.left = `${moveDist}px`
+        move(1);
     }
   }
 }
