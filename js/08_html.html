@@ -52,7 +52,7 @@ window.onload = function() {
 
   /* 주요 변수 초기화 */
   let moveDist = 0;
-  let currentNum = 1;
+  let currentNum = 0;
   const speedTime = 500;
 
   /* CSSOM 셋업 */
@@ -60,6 +60,7 @@ window.onload = function() {
   const liWidth = slideLis[0].clientWidth;
   const sliderWidth = liWidth * sliderCloneLis.length;
   slider.style.width = `${sliderWidth}px`;
+  currentNum = 1;
   moveDist = -liWidth;
   slider.style.left = `${moveDist}px`;
 

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+* {margin:0; padding:0; text-decoration: none;}
+body {width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center;}
+li {list-style: none;}
+.kind_wrap {border:2px solid black; width:100%; max-width:300px; margin:0 auto; position: relative;}
+.kind_wrap > .kind_slider {overflow: hidden;}
+.kind_wrap > .kind_slider .slider {position: relative;}
+.kind_wrap > .kind_slider .slider li {float:left;}
+.kind_wrap > .kind_slider img {vertical-align: top;}
+.kind_wrap .arrow > a {color: black; font-size: 40px;}
+.kind_wrap .arrow > a.prev {position: absolute; left:-50px; top:130px}
+.kind_wrap .arrow > a.next {position: absolute; right:-50px; top:130px;}
+</style>
+</head>
+<body>
+
+
+<div class="kind_wrap">
+  <div class="kind_slider">
+    <ul class="slider">
+        <li><img src="../img/300-pepe01.png" alt=""></li>
+        <li><img src="../img/300-pepe06.png" alt=""></li>
+        <li><img src="../img/300-pepe07.png" alt=""></li>
+        <li><img src="../img/300-pepe08.png" alt=""></li>
+        <li><img src="../img/300-pepe09.png" alt=""></li>
+        <li><img src="../img/300-pepe10.png" alt=""></li>
+        <li><img src="../img/300-pepe11.png" alt=""></li>
+    </ul>
+  </div>
+  <div class="arrow">
+      <a href="" class="prev"><</a>
+      <a href="" class="next">></a>
+  </div>
+</div>
+
+<script>
+window.onload = function() {
+  const kindWrap =  document.querySelector('.kind_wrap');
+  const slider = kindWrap.querySelector('.slider');
+  const slideLis = slider.querySelectorAll('li')
+  const moveButton = kindWrap.querySelector('.arrow');
+
+  /* 클론 */
+  const clone1 = slideLis[0].cloneNode(true);
+  const cloneLast = slideLis[slideLis.length - 1].cloneNode(true);
+  slider.insertBefore(cloneLast, slideLis[0]);
+  slider.appendChild(clone1);
+
+  /* 주요 변수 초기화 */  
+  let currentIdx = 0;
+  let translate = 0;
+  const speedTime = 500;
+
+  /* CSSOM 셋업 */
+  const sliderCloneLis = slider.querySelectorAll('li'); // 기존 li와 클론 li까지 포함해 가로 값을 계산하기 위함.
+  const liWidth = slideLis[0].clientWidth;
+  const sliderWidth = liWidth * sliderCloneLis.length;
+  slider.style.width = `${sliderWidth}px`;
+  currentIdx = 1;
+  translate = -liWidth;
+  slider.style.transform = `translateX(${translate}px)`
+
+  /* 리스너 설치하기 */
+  moveButton.addEventListener('click', moveSlide);
+
+  /* 슬라이드 실행 */
+  function move(D) {
+    currentIdx += (-1 * D);
+    translate += liWidth * D;
+    slider.style.transform = `translateX(${translate}px)`;
+    slider.style.transition = `all ${speedTime}ms ease`
+  }
+
+  /* 클릭 버튼 */
+  function moveSlide(event) {
+    event.preventDefault();
+    if (event.target.className === 'next') {
+      move(-1);
+      if (currentIdx === sliderCloneLis.length -1)
+        setTimeout(() => {
+          slider.style.transition = 'none';
+          currentIdx = 1;
+          translate = -liWidth;
+          slider.style.transform = `translateX(${translate}px)`;
+        }, speedTime);
+    } else {
+        move(1);
+        if (currentIdx === 0) {
+          setTimeout(() => {
+            slider.style.transition = 'none';
+            currentIdx = sliderCloneLis.length -2;
+            translate = -(liWidth * currentIdx);
+            slider.style.transform = `translateX(${translate}px)`;
+          }, speedTime);
+        }
+      }
+  }
+
+
+  function sliding() {
+    move(-1);
+    if (currentIdx === sliderCloneLis.length -1)
+        setTimeout(() => {
+          slider.style.transition = 'none';
+          currentIdx = 1;
+          translate = -liWidth;
+          slider.style.transform = `translateX(${translate}px)`;
+        }, speedTime);
+  }
+
+  function showSliding() {
+    setInterval(sliding, 1500);
+  }
+
+  showSliding();
+}
+
+
+</script>
+
+</body>
+</html>
