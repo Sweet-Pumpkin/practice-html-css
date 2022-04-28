@@ -1,0 +1,77 @@
+function kSlider() {
+  /* 노드 준비 */
+  const kindWrap =  document.querySelector('.kind_wrap');
+  const slider = kindWrap.querySelector('.slider');
+  const slideLis = slider.querySelectorAll('li')
+  // const moveButton = kindWrap.querySelector('.arrow');
+
+  const cloneA = slideLis[0].cloneNode(true);
+  const cloneC = slideLis[slideLis.length - 1].cloneNode(true);
+  slider.insertBefore(cloneC, slideLis[0]);
+  slider.appendChild(cloneA);
+
+  /* HTML 버튼 */
+  const moveButton = document.createElement('div');
+  moveButton.className = 'arrow';
+  const prevA = document.createElement('a');
+  const nextA = document.createElement('a');
+  prevA.className = 'prev';
+  prevA.textContent = '이전';
+  prevA.href = '';
+  nextA.className = 'next';
+  nextA.textContent = '다음';
+  nextA.href = '';
+  moveButton.appendChild(prevA);
+  moveButton.appendChild(nextA);
+  kindWrap.appendChild(moveButton);
+
+  /* 주요 변수 초기화 */
+  let moveDist = 0;
+  let currentNum = 0;
+  const speedTime = 500;
+
+  /* CSSOM 셋업 */
+  const sliderCloneLis = slider.querySelectorAll('li'); // 기존 li와 클론 li까지 포함해 가로 값을 계산하기 위함.
+  const liWidth = slideLis[0].clientWidth;
+  const sliderWidth = liWidth * sliderCloneLis.length;
+  slider.style.width = `${sliderWidth}px`;
+  currentNum = 1;
+  moveDist = -liWidth;
+  slider.style.left = `${moveDist}px`;
+
+  /* 리스너 설치하기 */
+  moveButton.addEventListener('click', moveSlide);
+
+  function move(direction) {
+    currentNum += (-1 * direction);
+    moveDist += liWidth * direction;
+    slider.style.left = `${moveDist}px`;
+    slider.style.transition = `all ${speedTime}ms ease`;
+  }
+
+
+  function moveSlide(event) {
+    event.preventDefault();
+    if (event.target.className === 'next') {
+      move(-1);
+      if (currentNum === sliderCloneLis.length - 1) {
+        setTimeout(() => {
+          slider.style.transition = 'none'; // 애니메이션 중단
+          moveDist = -liWidth; // li[0] 값 
+          slider.style.left = `${moveDist}px`; // li[0] 값 위치로
+          currentNum = 1;
+        }, speedTime );
+      }
+    } else {
+      move(1);
+      if (currentNum === 0) {
+        setTimeout(() => {
+          slider.style.transition = 'none';
+          currentNum = sliderCloneLis.length -2;
+          moveDist = -(liWidth * currentNum); // li[0] 값 
+          slider.style.left = `${moveDist}px`; // li[0] 값 위치로
+        }, speedTime);
+      }
+    }
+  }
+}

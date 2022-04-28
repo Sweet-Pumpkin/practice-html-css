@@ -5,17 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<style>
-* {margin:0; padding:0;}
-li {list-style: none;}
-.kind_wrap {border:2px solid black; width:100%; max-width:800px; margin:0 auto; position: relative;}
-.kind_wrap > .kind_slider {overflow: hidden;}
-.kind_wrap > .kind_slider .slider {position: relative;}
-.kind_wrap > .kind_slider .slider li {float:left;}
-.kind_wrap > .kind_slider img {vertical-align: top;}
-.kind_wrap .arrow > a.prev {position: absolute; left:-50px; top:100px;}
-.kind_wrap .arrow > a.next {position: absolute; right:-50px; top:100px;}
-</style>
+<link rel="stylesheet" href="./style.css" />
+<script src="./slider.js"></script>
 </head>
 <body>
 
@@ -31,77 +22,16 @@ li {list-style: none;}
         <li><img src="https://via.placeholder.com/800x200.png?text=6" alt=""></li>
     </ul>
   </div>
-  <div class="arrow">
+  <!-- <div class="arrow">
       <a href="" class="prev">이전</a>
       <a href="" class="next">다음</a>
-  </div>
+  </div> -->
 </div>
 
 <script>
 window.onload = function() {
-  /* 노드 준비 */
-  const kindWrap =  document.querySelector('.kind_wrap');
-  const slider = kindWrap.querySelector('.slider');
-  const slideLis = slider.querySelectorAll('li')
-  const moveButton = kindWrap.querySelector('.arrow');
-
-  const cloneA = slideLis[0].cloneNode(true);
-  const cloneC = slideLis[slideLis.length - 1].cloneNode(true);
-  slider.insertBefore(cloneC, slideLis[0]);
-  slider.appendChild(cloneA);
-
-  /* 주요 변수 초기화 */
-  let moveDist = 0;
-  let currentNum = 0;
-  const speedTime = 500;
-
-  /* CSSOM 셋업 */
-  const sliderCloneLis = slider.querySelectorAll('li'); // 기존 li와 클론 li까지 포함해 가로 값을 계산하기 위함.
-  const liWidth = slideLis[0].clientWidth;
-  const sliderWidth = liWidth * sliderCloneLis.length;
-  slider.style.width = `${sliderWidth}px`;
-  currentNum = 1;
-  moveDist = -liWidth;
-  slider.style.left = `${moveDist}px`;
-
-  /* 리스너 설치하기 */
-  moveButton.addEventListener('click', moveSlide);
-
-  function move(direction) {
-    currentNum += (-1 * direction);
-    moveDist += liWidth * direction;
-    slider.style.left = `${moveDist}px`;
-    slider.style.transition = `all ${speedTime}ms ease`;
-  }
-
-
-  function moveSlide(event) {
-    event.preventDefault();
-    if (event.target.className === 'next') {
-      move(-1);
-      if (currentNum === sliderCloneLis.length - 1) {
-        setTimeout(() => {
-          slider.style.transition = 'none'; // 애니메이션 중단
-          moveDist = -liWidth; // li[0] 값 
-          slider.style.left = `${moveDist}px`; // li[0] 값 위치로
-          currentNum = 1;
-        }, speedTime );
-      }
-    } else {
-      move(1);
-      if (currentNum === 0) {
-        setTimeout(() => {
-          slider.style.transition = 'none';
-          currentNum = sliderCloneLis.length -2;
-          moveDist = -(liWidth * currentNum); // li[0] 값 
-          slider.style.left = `${moveDist}px`; // li[0] 값 위치로
-        }, speedTime);
-      }
-    }
-  }
+  kSlider();  
 }
-
-
 </script>
 
 </body>
