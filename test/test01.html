@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const cars = [
+      {
+        차명: "K5",
+        회사명: "기아",
+        구분: "국산"
+      },
+      {
+        차명: "아반떼",
+        회사명: "현대",
+        구분: "국산"
+      },
+      {
+        차명: "A6",
+        회사명: "아우디",
+        구분: "수입"
+      },
+      {
+        차명: "카이엔",
+        회사명: "포르쉐",
+        구분: "수입"
+      },
+      {
+        차명: "투싼",
+        회사명: "현대",
+        구분: "국산"
+      }
+    ]
+
+    for (let i = 0; i < cars.length; i ++) {
+      if (cars[i].구분 === "국산") {
+        document.write(cars[i].차명 + "정도면 괜찮지~<br />");
+      } else {
+        document.write(cars[i].차명 + "탈 바엔 국산차 타지<br />")
+      }
+    }
+  </script>
+</body>
+</html>
