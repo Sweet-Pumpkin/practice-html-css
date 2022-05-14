@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function print(num) {
+      document.write(`${num}달러는 수수료 10% 제외 ${pay(num)}원으로 환전할 수 있습니다.`);
+      function pay(num) {
+        return dollor(num) - (dollor(num) * 0.1);
+        function dollor(num) {
+          return num * 1200;  
+        }
+      }
+    }
+    print(1);
+  </script>
+</body>
+</html>
