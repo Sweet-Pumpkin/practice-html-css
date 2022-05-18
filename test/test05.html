@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const food = ["치킨","초밥","육회","김밥","LA갈비","피자","파스타","냉면","샐러드"];
+    console.log(food[4])
+    for (let i = 0; i < food.length; i ++) {
+	    document.write(food[i] + "도 먹고, ");
+	    if (i === 4) break;
+    }
+    document.write("이제 그만 먹을래요.");
+  </script>
+</body>
+</html>

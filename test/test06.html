@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    document.write('제 xx회 지방선거 여론조사입니다.');
+    document.write('Q1. 귀하께서는 현재 xx시에 거주 중이십니까?');
+    const partys = ["A당", "B당", "C연대", "D연합", "E당"]
+    function q1(e) {
+      if (e === 'Yes') {
+        document.write("Q2. 귀하께서 지지하시는 정당은 아래 중 어디입니까?");
+        for (let i = 0; i < partys.length; i ++) {
+          document.write(`${i}번 ${partys[i]}`);
+        }
+      } else {
+        document.write("귀하께서는 이번 여론조사 대상이 아닙니다.");
+      }
+    }
+    q1('No');
+  </script>
+</body>
+</html>

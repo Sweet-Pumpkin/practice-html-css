@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form>
+    <input value="" type="text" />
+    <button>Click</button>
+  </form>
+  <script>
+    const form = document.querySelector("form");
+    const user = form.querySelector("input");
+    const btn = document.querySelector("button");
+
+
+    function handleUser(e) {
+      e.preventDefault();
+      const name = user.value;
+      UserName(name);
+      Clock();
+    }
+
+    function UserName(e) {
+      document.write(`Hello! ${e}!`)
+    }
+
+    function Clock() {
+      const date = new Date();
+      const hours = String(date.getHours()).padStart(2, "0");
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      document.write(` It's ${hours}:${minutes} now`);
+    }
+
+    form.addEventListener("submit", handleUser);
+  </script>
+</body>
+</html>
