@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input id="id" type="text">
+  <button id="btn">Click</button>
+  <script>
+    const id = document.getElementById("id");
+    const btn = document.getElementById("btn");
+
+    function handleEvent() {
+      if (id.value == 0) {
+        alert("빈 값입니다.");
+      } else {
+        if (id.value === " ") {
+          alert("빈 값입니다.")
+        } else {
+          alert(id.value);
+        }
+      }
+    }
+
+    btn.addEventListener("click", handleEvent);
+  </script>
+</body>
+</html>
